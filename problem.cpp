@@ -10,10 +10,10 @@ Problem::Problem() {
 
 Problem::Problem(vector<int> inputpuzzle) {
 
-    vector<int> goalpuzzle = {1, 2, 3 , 4, 5 ,6, 7, 8, 0};
+    vector<int> goalpuzzle = {1, 2, 3, 4, 5, 6, 7, 8, 0};
     this->puzzle=inputpuzzle;
-    if(this->puzzle==goalpuzzle){isgoal=true;}
-    else{isgoal=false;}
+    if(inputpuzzle==goalpuzzle){this->isgoal=true;}
+    else{this->isgoal=false;}
 }
 
 vector<int> Problem::returnpuzzle() {
@@ -21,7 +21,7 @@ vector<int> Problem::returnpuzzle() {
 }
 
 int Problem::returnzero() {
-    for(int i=0;i<9;i++){
+    for(int i=0;i<this->puzzle.size();i++){
         if(this->puzzle.at(i)==0){ return i;}
     }
     return 99999999;

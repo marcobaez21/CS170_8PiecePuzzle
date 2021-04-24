@@ -3,4 +3,4 @@ project(Project1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Project1 main.cpp problem.h problem.cpp node.h node.cpp)
+add_executable(Project1 main.cpp problem.h problem.cpp node.h node.cpp tree.h tree.cpp Astar.cpp)

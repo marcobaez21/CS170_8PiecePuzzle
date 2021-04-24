@@ -36,6 +36,7 @@ public:
     int getHeuristic(string);
     int g();
     int h();
+    bool isgoal();
 
 };
 

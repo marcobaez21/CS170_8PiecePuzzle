@@ -41,12 +41,7 @@ void astar(Tree input){
 
     while(!input.getfrontier().empty()){
         //topnode=input.getfrontier().pop(); WHO DESIGNED THIS POP SHOULD RETURN POPPED VARIABLE AHHH
-       // topnode=input.popfromfrontier();
-      // topnode=input.getfrontier().top();
-       //cout<<"Top node: " <<endl;
-       //for(int i=0; i<topnode->getPuzzle().size();i++){cout<<topnode->getPuzzle().at(i);}
-       //cout<<endl;
-       topnode=input.popfromfrontier();
+          topnode=input.popfromfrontier();
         if(topnode->isgoal()){
             cout<<"Finished"<<endl;
             cout<<"Number of nodes expanded were: " << totalnodesexpanded << endl;

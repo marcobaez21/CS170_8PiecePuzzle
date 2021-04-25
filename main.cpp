@@ -1,23 +1,26 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 //#include "Astar.cpp"
 #include "tree.h"
 
 void trace(Node* input){
-    vector<Node*> reversedlist;
+    stack<Node*> liststack;
     vector<int> finishedpuzzle = {1, 2, 3, 4, 5, 6, 7, 8, 0};
     while(input->getParent()!=NULL){
-        reversedlist.push_back(input->getParent());
+        liststack.push(input->getParent());
         input=input->getParent();
     }
     cout<<"------------------------------------------------------"<<endl;
     cout<<"Printing trace for answer"<<endl;
     cout<<"------------------------------------------------------"<<endl;
 
-    for(int i=reversedlist.size()-1;i>=0;i--){
+
+    for(int i=0;i=liststack.size();i++){
         cout<<endl;
-        for(int j=0;j<9;j++){if(j%3==0 && j!=0){std::cout<<std::endl;}std::cout<<reversedlist.at(i)->getPuzzle().at(j)<<" ";}
+        for(int j=0;j<9;j++){if(j%3==0 && j!=0){std::cout<<std::endl;}std::cout<<liststack.top()->getPuzzle().at(j)<<" ";}
         cout<<endl;
+        liststack.pop();
     }
     cout<<endl;
     for(int j=0;j<9;j++){if(j%3==0 && j!=0){std::cout<<std::endl;}std::cout<<finishedpuzzle.at(j)<<" ";}

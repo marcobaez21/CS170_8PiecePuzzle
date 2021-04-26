@@ -4,6 +4,9 @@
 //#include "Astar.cpp"
 #include "tree.h"
 
+//Read this for help on how to check if puzzle is solvable:
+//https://math.stackexchange.com/questions/3582363/how-to-know-if-a-8-puzzle-is-solvable
+
 void trace(Node* input){
     stack<Node*> liststack;
     vector<int> finishedpuzzle = {1, 2, 3, 4, 5, 6, 7, 8, 0};
@@ -30,6 +33,17 @@ void trace(Node* input){
     cout<<"Thank you!"<<endl;
     cout<<"------------------------------------------------------"<<endl;
 
+}
+
+bool issolvable(vector<int> input){
+    int count=0;
+    for(int i=0;i<input.size()-1;i++){
+        for(int j=i+1;j<input.size();j++){
+            if((input.at(i)>input.at(j))&&(input.at(i)!=0)&&(input.at(j)!=0)){count++;}
+        }
+    }
+    if(count%2==0)return true;
+    else return false;
 }
 
 void astar(Tree input){
@@ -155,7 +169,7 @@ int main() {
    int temp = 0;
    int algorithm = 0;
 
-   std::vector<int> inputpuzzle = {1, 2, 0, 4, 5, 3, 7, 8, 6};
+   std::vector<int> inputpuzzle = {1, 0, 3, 4, 2, 6, 7, 5, 8};
    // std::cout << "Hello, World!" << std::endl;
    std::cout << "Welcome to mbaez007's 8 puzzle solver." << std::endl;
    std::cout << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << std::endl;
@@ -197,6 +211,7 @@ int main() {
    std::cout<<"2 for A* with Misplaced Tile heuristic"<<std::endl;
    std::cout<<"3 fot A* with Euclidian distance heuristic"<<std::endl;
    std::cin>>algorithm;
+   if(!issolvable(inputpuzzle)){cout<<endl<<"Error: Puzzle input is unsolvable. Quitting program..."<<endl; return 0;}
    if(algorithm==1){
       // std::vector<int> testpuzzle = {1, 2, 0, 4, 5, 3, 7, 8, 6}; // for testing
        Node* temp = new Node(inputpuzzle, "UCS", 0, NULL);
